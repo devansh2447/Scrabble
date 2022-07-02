@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Player
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Player\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=name\ pos\ instance
+comment1.target=Player(java.lang.String,\ int,\ Instance)
+comment2.params=
+comment2.target=void\ fillTiles()
+comment3.params=start\ end\ size
+comment3.target=int[]\ getRandomArray(int,\ int,\ int)
+comment4.params=reference\ check
+comment4.target=boolean\ contains(int[],\ int)
+comment5.params=min\ max
+comment5.target=int\ random(int,\ int)
+numComments=6

@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Bag
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Bag\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Bag()
+comment2.params=num
+comment2.target=java.lang.String\ getLetter(int)
+comment3.params=
+comment3.target=void\ crop()
+comment4.params=tiles
+comment4.target=int\ countNull(Tile[])
+comment5.params=tiles\ check
+comment5.target=int\ count(Tile[],\ Tile)
+comment6.params=
+comment6.target=int[]\ getDistribution()
+numComments=7
