@@ -63,11 +63,11 @@ public class Utils
 
     public static void saveFile(String path, String url){
         try (BufferedInputStream inputStream = new BufferedInputStream(new URL(url).openStream());
-        FileOutputStream fileOS = new FileOutputStream(path)) {
+        FileOutputStream file = new FileOutputStream(path)) {
             byte data[] = new byte[2^20];
             int byteContent;
             while ((byteContent = inputStream.read(data, 0, 2^20)) != -1) {
-                fileOS.write(data, 0, byteContent);
+                file.write(data, 0, byteContent);
             }
         }
         catch (IOException e) {
@@ -84,12 +84,18 @@ public class Utils
         if(!exists(getPathForReference())){
             boolean isConnected = isInternetAvailable();
             if(isConnected ){
-                saveFile(getPathForReference(), "https://raw.githubusercontent.com/devansh2447/java-scrabble/main/words.txt");
+                saveFile(getPathForReference(), "https://raw.githubusercontent.com/devansh2447/Scrabble/master/words.txt");
             }
             else{
-                System.out.println("System not connected to internet, so file cannot be updated."); 
+                System.out.println("System not connected to internet or site not reachable, so file cannot be updated."); 
+                exit();
             }
         }
+    }
+
+    public static void exit(){
+        System.out.flush();
+        System.exit(0);
     }
 
     //code for checking connection from here: https://stackoverflow.com/a/30817677

@@ -55,7 +55,6 @@ public class Word
         if(isWord(word, board.wordList)){
             return new Word(square, horizontal[hPos + word.length() - 1], board);
         }
-        //complete code - check if word is valid
         return null;
     }
 
@@ -66,7 +65,6 @@ public class Word
         if(isWord(word, board.wordList)){
             return new Word(square, vertical[vPos + word.length() - 1], board);
         }
-        //complete code - check if word is valid
         return null;
     }
 
@@ -81,7 +79,7 @@ public class Word
                 forReturn = forReturn + squares[iter].tile.name;
             }
             else{
-                if(iter <= include){
+                if(iter >= include){
                     break;
                 }
                 else{
