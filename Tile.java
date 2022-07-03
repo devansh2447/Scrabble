@@ -33,12 +33,7 @@ public class Tile
     }
     
     public String getString(){
-        if(this == null){
-            return "   ";
-        }
-        else{
-            return this.name + this.value;
-        }
+        return this.name + this.value;
     }
     
     public static int[] getScores(){        
