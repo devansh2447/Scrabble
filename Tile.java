@@ -60,7 +60,7 @@ public class Tile
         
     }
 
-    public Tile cloneTile(){
+    public Tile clone(){
         return new Tile(this.name, this.isBlank);
     }
 }

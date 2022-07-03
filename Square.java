@@ -21,6 +21,12 @@ public class Square
         this.wordMultiply = wordMultiply;
     }
 
+    public Square clone(){
+        Square forReturn = new Square(this.x, this.y, this.letterMultiply, this.wordMultiply);
+        forReturn.tile = this.tile.clone();
+        return forReturn;
+    }
+
     public void print(){
         if(this != null && this.tile != null){
             if(this.letterMultiply == this.wordMultiply){

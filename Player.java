@@ -13,6 +13,10 @@ public class Player
     int score;
     Instance instance;
 
+    public Player(){
+
+    }
+
     public Player(String name, int pos, Instance instance){
         this.name = name;
         this.pos = pos;
@@ -20,7 +24,7 @@ public class Player
         int[] random = getRandomArray(0, this.instance.bag.tiles.length - 1, 7);
         this.tiles = new Tile[7];
         for(int iter = 0; iter < random.length; iter++){
-            this.tiles[iter] = this.instance.bag.tiles[random[iter]].cloneTile();
+            this.tiles[iter] = this.instance.bag.tiles[random[iter]].clone();
             instance.bag.tiles[random[iter]] = null;
         }
         instance.bag.crop();
@@ -30,11 +34,24 @@ public class Player
         for(int iter = 0; iter < this.tiles.length; iter++){
             if(this.tiles[iter] == null){
                 int random = random(0, this.instance.bag.tiles.length - 1);
-                this.tiles[iter] = this.instance.bag.tiles[random].cloneTile();
+                this.tiles[iter] = this.instance.bag.tiles[random].clone();
                 this.instance.bag.tiles[random] = null;
                 this.instance.bag.crop();
             }
         }
+    }
+
+    public Player clone(){
+        Player forReturn = new Player();
+        Tile[] tiles = new Tile[this.tiles.length];
+        for(int iter = 0; iter < tiles.length; iter++){
+            tiles[iter] = this.tiles[iter].clone();
+        }
+        forReturn.name = this.name;
+        forReturn.pos = this.pos;
+        forReturn.score = this.score;
+        forReturn.instance = this.instance;
+        return forReturn;
     }
 
     public static int[] getRandomArray(int start, int end, int size){

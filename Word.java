@@ -8,12 +8,14 @@
 public class Word
 {
     // wordlist from here: https://drive.google.com/file/d/1oGDf1wjWp5RF_X9C7HoedhIWMh5uJs8s/view
-    Square[] squares;
     String word;
     int score;
-    boolean isValid;
     //add player
     
+    public Word(){
+
+    }
+
     public Word(Square start, Square end, Board board){
         String word = "";
         int score = 0;
@@ -46,6 +48,22 @@ public class Word
         }
         this.word = word;
         this.score = score * highestWordMultiply;
+    }
+
+    public Word clone(){
+        Word forReturn = new Word();
+        forReturn.word = this.word;
+        forReturn.score = this.score;
+        return forReturn;        
+    }
+
+    public static int getLarger(int int1, int int2){
+        if(int1 > int2){
+            return int1;
+        }
+        else{
+            return int2;
+        }
     }
     
     public static Word getWordHorizontal(Square square, Board board){

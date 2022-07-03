@@ -32,6 +32,19 @@ public class Bag
         }
     }
 
+    public Bag(int size){
+        this.tiles = new Tile[size];
+    }
+
+    public Bag clone(){
+        Bag forReturn = new Bag(this.tiles.length);
+        for(int iter = 0; iter < forReturn.tiles.length; iter++){
+            forReturn.tiles[iter] = this.tiles[iter].clone();
+        }
+        forReturn.numberOfTiles = this.numberOfTiles;
+        return forReturn;
+    }
+
     public static String getLetter(int num){
         String reference = "ABCDEFGHIJKLMNOPQRSTUVWXYZ_";
         return reference.charAt(num) + "";

@@ -15,7 +15,7 @@ public class Board
     public Board(){
         this.wordPos = 0;
         this.squares = new Square[226];
-        this.words = new Word[1000];
+        this.words = new Word[1000000];
         int assign = 1;
         for(int row = 1; row < 22; row++){
             for(int column = 1; column < 22; column++){
@@ -23,6 +23,24 @@ public class Board
                 //add code to check for double and triple words and letters - develop separate mthods
             }
         }
+    }
+
+    public Board clone(){
+        Board forReturn = new Board();
+        Square[] squares = new Square[this.squares.length];
+        Word[] words = new Word[this.words.length];
+        int iter;
+        for(iter = 0; iter < squares.length; iter++){
+            squares[iter] = this.squares[iter].clone();
+        }
+        forReturn.squares = squares;
+        for(iter = 0; iter < words.length; iter++){
+            words[iter] = this.words[iter].clone();
+        }
+        forReturn.words = words;
+        forReturn.wordPos = this.wordPos;
+        forReturn.wordList = this.wordList;
+        return forReturn;
     }
     
     public Square getSquare(int x, int y){
