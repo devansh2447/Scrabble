@@ -40,7 +40,7 @@ public class Utils
 
     //credits for this method: https://stackoverflow.com/a/10710115
     //helped me find an efficient way to read the full dictionary file
-    public static String processFile(String name) throws IOException {
+    public static String processFile(String name) throws IOException{
         String filename = name;
         String content = null;
         File file = new File(filename);
@@ -81,8 +81,14 @@ public class Utils
 
     public static void init() throws IOException {
         createDirectory(getRootDirectory());
-        if(isInternetAvailable()){
-            saveFile(getPathForReference(), "https://raw.githubusercontent.com/devansh2447/java-scrabble/main/words.txt");
+        if(!exists(getPathForReference())){
+            boolean isConnected = isInternetAvailable();
+            if(isConnected ){
+                saveFile(getPathForReference(), "https://raw.githubusercontent.com/devansh2447/java-scrabble/main/words.txt");
+            }
+            else{
+                System.out.println("System not connected to internet, so file cannot be updated."); 
+            }
         }
     }
 
@@ -102,5 +108,10 @@ public class Utils
         catch(UnknownHostException unknownHost){
             return false;
         }
+    }
+
+    public static boolean exists(String path){
+        File file = new File(path);
+        return file.exists();
     }
 }
