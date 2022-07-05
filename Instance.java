@@ -80,6 +80,7 @@ public class Instance
     }
 
     public boolean interpretInput(String input, int playerNum){
+        Board board = this.board;
         Player player = this.players[playerNum];
         String letter;
         int xPos;
@@ -88,9 +89,15 @@ public class Instance
             letter = input.charAt(iter) + "";
             xPos = Integer.parseInt(input.charAt(iter + 1) + "");
             yPos = Integer.parseInt(input.charAt(iter + 2) + "");
-            //complete
+            boolean isValid = board.add(xPos, yPos, letter) && player.hasTile(letter);
+            if(!isValid){
+                return false;
+            }
+            else{
+                //add code to remove tile from player
+            }
         }
-        return false;
+        return true;
     }
 
     public static void test() throws IOException{

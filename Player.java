@@ -30,6 +30,15 @@ public class Player
         instance.bag.crop();
     }
 
+    public boolean hasTile(String name){
+        for(int iter = 0; iter < this.tiles.length; iter++){
+            if(this.tiles[iter].name.equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void fillTiles(){
         for(int iter = 0; iter < this.tiles.length; iter++){
             if(this.tiles[iter] == null){

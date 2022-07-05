@@ -25,6 +25,16 @@ public class Board
         }
     }
 
+    public boolean add(int x, int y, String name){
+        if(this.squares[getPos(x, y)].tile == null){
+            this.squares[getPos(x, y)].tile = new Tile(name, !name.equals("_"));
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public Board clone(){
         Board forReturn = new Board();
         Square[] squares = new Square[this.squares.length];
