@@ -39,6 +39,14 @@ public class Player
         return false;
     }
 
+    public void removeTile(String name){
+        for(int iter = 0; iter < this.tiles.length; iter++){
+            if(this.tiles[iter].name.equals(name)){
+                this.tiles[iter] = null;
+            }
+        }
+    }
+
     public void fillTiles(){
         for(int iter = 0; iter < this.tiles.length; iter++){
             if(this.tiles[iter] == null){

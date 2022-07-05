@@ -94,9 +94,10 @@ public class Instance
                 return false;
             }
             else{
-                //add code to remove tile from player
+                player.removeTile(letter);
             }
         }
+        
         return true;
     }
 

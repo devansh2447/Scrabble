@@ -12,50 +12,7 @@ public class Word
     int score;
     //add player
     
-    public Word(){
-
-    }
-
-    public Word(Square start, Square end, Board board){
-        String word = "";
-        int score = 0;
-        Square square;
-        int letterMultiply;
-        int highestWordMultiply = 1;
-        if(start.x == end.x){
-            for(int iter = start.y; iter > end.y - 1; iter--){
-                square = board.getSquare(start.x, iter);
-                word = word + square.tile.name;
-                letterMultiply = square.letterMultiply;
-                score = score + (square.tile.value * letterMultiply);
-                int wordMultiply = square.wordMultiply;
-                if(wordMultiply > highestWordMultiply){
-                    highestWordMultiply = wordMultiply;
-                }
-            }
-        }
-        else if(start.y == end.y){
-            for(int iter = start.x; iter < end.x + 1; iter++){
-                square = board.getSquare(iter, start.y);
-                word = word + square.tile.name;
-                letterMultiply = square.letterMultiply;
-                score = score + (square.tile.value * letterMultiply);
-                int wordMultiply = square.wordMultiply;
-                if(wordMultiply > highestWordMultiply){
-                    highestWordMultiply = wordMultiply;
-                }
-            }
-        }
-        this.word = word;
-        this.score = score * highestWordMultiply;
-    }
-
-    public Word clone(){
-        Word forReturn = new Word();
-        forReturn.word = this.word;
-        forReturn.score = this.score;
-        return forReturn;        
-    }
+    //redevelop- do not use Word object
 
     public static int getLarger(int int1, int int2){
         if(int1 > int2){
@@ -66,24 +23,28 @@ public class Word
         }
     }
     
-    public static Word getWordHorizontal(Square square, Board board){
+    public static boolean checkHorizontal(Square square, Board board){
         Square[] horizontal = board.getSquares(1, square.y, 1, 0);
         int hPos = square.x - 1;
         String word = getWordFromArray(horizontal, hPos);
         if(isWord(word, board.wordList)){
-            return new Word(square, horizontal[hPos + word.length() - 1], board);
+            return true;
         }
-        return null;
+        return false;
     }
 
-    public static Word getWordVertical(Square square, Board board){
+    public static boolean checkVertical(Square square, Board board){
         Square[] vertical = board.getSquares(square.x, 1, 0, 1);
         int vPos = square.y - 1;
         String word = getWordFromArray(vertical, vPos);
         if(isWord(word, board.wordList)){
-            return new Word(square, vertical[vPos + word.length() - 1], board);
+            return true;
         }
-        return null;
+        return false;
+    }
+
+    public static boolean isValid(Square square, Board board){
+        return checkHorizontal(square, board) || checkVertical(square, board);
     }
 
     public static boolean isWord(String check, String reference){

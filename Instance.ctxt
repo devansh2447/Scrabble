@@ -1,10 +1,18 @@
 #BlueJ class context
 comment0.target=Instance
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Instance\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=numberOfPlayers\ playerNames\ log
-comment1.target=Instance(int,\ java.lang.String[],\ boolean)
-comment2.params=
-comment2.target=void\ test()
-comment3.params=args
-comment3.target=void\ main(java.lang.String[])
-numComments=4
+comment1.params=
+comment1.target=Instance()
+comment2.params=numberOfPlayers\ playerNames\ log
+comment2.target=Instance(int,\ java.lang.String[],\ boolean)
+comment3.params=playerNum
+comment3.target=void\ newMove(int)
+comment4.params=
+comment4.target=Instance\ clone()
+comment5.params=input\ playerNum
+comment5.target=boolean\ interpretInput(java.lang.String,\ int)
+comment6.params=
+comment6.target=void\ test()
+comment7.params=args
+comment7.target=void\ main(java.lang.String[])
+numComments=8
