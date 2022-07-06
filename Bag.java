@@ -39,7 +39,8 @@ public class Bag
     public Bag clone(){
         Bag forReturn = new Bag(this.tiles.length);
         for(int iter = 0; iter < forReturn.tiles.length; iter++){
-            forReturn.tiles[iter] = this.tiles[iter].clone();
+            Tile tile = this.tiles[iter].clone();
+            forReturn.tiles[iter] = tile;
         }
         forReturn.numberOfTiles = this.numberOfTiles;
         return forReturn;
@@ -52,6 +53,10 @@ public class Bag
 
     public void crop(){
         Tile[] tiles = new Tile[100 - countNull(this.tiles)];
+        if(countNull(this.tiles) == 0){
+            return;
+        }
+        System.out.println(tiles.length);
         int firstNotFilled = 0;
         for(int iter = 0; iter < this.tiles.length; iter++){
             if(this.tiles[iter] != null){
@@ -84,5 +89,12 @@ public class Bag
 
     public static int[] getDistribution(){
         return new int[] {9, 2, 2, 4, 12, 2, 3, 2, 9, 1, 1, 4, 2, 6, 8, 2, 1, 6, 4, 6, 4, 2, 2, 1, 2, 1, 2};
+    }
+
+    public static void main(String[] args){
+        Bag bag = new Bag();
+        for(int iter = 0; iter < bag.tiles.length; iter++){
+            System.out.println(bag.tiles[iter].getString());
+        }
     }
 }

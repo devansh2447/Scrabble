@@ -103,7 +103,7 @@ public class Instance
 
     public static void test() throws IOException{
         Instance instance = new Instance(2, new String[] {"A", "B"}, false);
-        instance.board.print();
+        instance.newMove(1);
     }
 
     

@@ -26,8 +26,9 @@ public class Player
         for(int iter = 0; iter < random.length; iter++){
             this.tiles[iter] = this.instance.bag.tiles[random[iter]].clone();
             instance.bag.tiles[random[iter]] = null;
+            instance.bag.crop();
         }
-        instance.bag.crop();
+        //instance.bag.crop();
     }
 
     public boolean hasTile(String name){
@@ -45,6 +46,7 @@ public class Player
                 this.tiles[iter] = null;
             }
         }
+        this.fillTiles();
     }
 
     public void fillTiles(){
