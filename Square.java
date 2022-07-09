@@ -23,7 +23,9 @@ public class Square
 
     public Square clone(){
         Square forReturn = new Square(this.x, this.y, this.letterMultiply, this.wordMultiply);
-        forReturn.tile = this.tile.clone();
+        if(this.tile != null){
+            forReturn.tile = this.tile.clone();
+        }        
         return forReturn;
     }
 

@@ -8,17 +8,16 @@
 public class Board
 {
     Square[] squares; //start from index 1 (NOT 0)
-    int wordPos;
     String wordList;
     
     public Board(){
-        this.wordPos = 0;
-        this.squares = new Square[226];
+        this.squares = new Square[442];
         int assign = 1;
         for(int row = 1; row < 22; row++){
             for(int column = 1; column < 22; column++){
                 this.squares[assign] = new Square(column, row, 1, 1);
                 //add code to check for double and triple words and letters - develop separate methods
+                assign++;
             }
         }
     }
@@ -37,11 +36,10 @@ public class Board
         Board forReturn = new Board();
         Square[] squares = new Square[this.squares.length];
         int iter;
-        for(iter = 0; iter < squares.length; iter++){
+        for(iter = 1; iter < squares.length; iter++){
             squares[iter] = this.squares[iter].clone();
         }
         forReturn.squares = squares;
-        forReturn.wordPos = this.wordPos;
         forReturn.wordList = this.wordList;
         return forReturn;
     }

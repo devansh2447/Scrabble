@@ -52,11 +52,10 @@ public class Bag
     }
 
     public void crop(){
-        Tile[] tiles = new Tile[100 - countNull(this.tiles)];
+        Tile[] tiles = new Tile[this.tiles.length - countNull(this.tiles)];
         if(countNull(this.tiles) == 0){
             return;
         }
-        System.out.println(tiles.length);
         int firstNotFilled = 0;
         for(int iter = 0; iter < this.tiles.length; iter++){
             if(this.tiles[iter] != null){

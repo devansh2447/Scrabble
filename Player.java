@@ -14,7 +14,7 @@ public class Player
     Instance instance;
 
     public Player(){
-
+        
     }
 
     public Player(String name, int pos, Instance instance){
@@ -26,9 +26,8 @@ public class Player
         for(int iter = 0; iter < random.length; iter++){
             this.tiles[iter] = this.instance.bag.tiles[random[iter]].clone();
             instance.bag.tiles[random[iter]] = null;
-            instance.bag.crop();
         }
-        //instance.bag.crop();
+        instance.bag.crop();
     }
 
     public boolean hasTile(String name){
@@ -66,6 +65,7 @@ public class Player
         for(int iter = 0; iter < tiles.length; iter++){
             tiles[iter] = this.tiles[iter].clone();
         }
+        forReturn.tiles = tiles;
         forReturn.name = this.name;
         forReturn.pos = this.pos;
         forReturn.score = this.score;

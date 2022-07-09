@@ -36,6 +36,7 @@ public class Instance
     }
 
     public void newMove(int playerNum){
+        //add code to print instance- give player's tiles, score, and board
         Instance old = this.clone();
         Scanner getInput = new Scanner(System.in);
         System.out.println(this.players[playerNum].name + "'s move.");

@@ -17,4 +17,6 @@ comment7.params=tiles\ check
 comment7.target=int\ count(Tile[],\ Tile)
 comment8.params=
 comment8.target=int[]\ getDistribution()
-numComments=9
+comment9.params=args
+comment9.target=void\ main(java.lang.String[])
+numComments=10
