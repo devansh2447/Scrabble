@@ -35,8 +35,22 @@ public class Instance
         //get players
     }
 
-    public void newMove(int playerNum){
-        //add code to print instance- give player's tiles, score, and board
+    public void print(){
+        this.board.print();
+        System.out.println();
+        for(int iter = 0; iter < this.players.length; iter++){
+            System.out.println(this.players[iter].name + "'s score: " + this.players[iter].score);
+            System.out.print(this.players[iter].name + "'s tiles: ");
+            this.players[iter].printTiles();
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public void newMove(int playerNum, boolean isFirstTime, boolean print){
+        if(print){
+            this.print();
+        }        
         Instance old = this.clone();
         Scanner getInput = new Scanner(System.in);
         System.out.println(this.players[playerNum].name + "'s move.");
@@ -53,14 +67,27 @@ public class Instance
             this.reference = old.reference;
             System.out.println("Invalid move, please try again.");
             System.out.println();
-            this.newMove(playerNum);
+            this.newMove(playerNum, isFirstTime, false);
         }
+        else if(isFirstTime && input.contains("88") == false){
+            this.board = old.board;
+            this.bag = old.bag;
+            this.players = old.players;
+            this.numberOfPlayers = old.numberOfPlayers;
+            this.log = old.log;
+            this.reference = old.reference;
+            System.out.println("First move has to have a piece on the middle square, please try again.");
+            System.out.println();
+            this.newMove(playerNum, isFirstTime, false);
+        }
+        //add code to check if game is over
         else{
             if(playerNum == this.numberOfPlayers - 1){
-                this.newMove(0);
+                //add code to check if players wish to continue
+                this.newMove(0, false, true);
             }
             else{
-                this.newMove(playerNum++);
+                this.newMove(playerNum++, false, true);
             }
         }
     }
@@ -80,7 +107,7 @@ public class Instance
         return forReturn;
     }
 
-    public boolean interpretInput(String input, int playerNum){
+    public boolean interpretInput(String input, int playerNum) throws java.lang.StringIndexOutOfBoundsException{
         Board board = this.board;
         Player player = this.players[playerNum];
         String letter;
@@ -90,7 +117,7 @@ public class Instance
             letter = input.charAt(iter) + "";
             xPos = Integer.parseInt(input.charAt(iter + 1) + "");
             yPos = Integer.parseInt(input.charAt(iter + 2) + "");
-            boolean isValid = board.add(xPos, yPos, letter) && player.hasTile(letter);
+            boolean isValid = board.add(xPos, yPos, letter) && player.hasTileBlank(letter); //add code to take blank tiles into account
             if(!isValid){
                 return false;
             }
@@ -98,13 +125,13 @@ public class Instance
                 player.removeTile(letter);
             }
         }
-        
+        player.fillTiles();
         return true;
     }
 
     public static void test() throws IOException{
         Instance instance = new Instance(2, new String[] {"A", "B"}, false);
-        instance.newMove(1);
+        instance.newMove(0, true, true);
     }
 
     

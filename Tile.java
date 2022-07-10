@@ -33,6 +33,7 @@ public class Tile
     }
     
     public String getString(){
+        this.assignScore();
         return this.name + this.value;
     }
     

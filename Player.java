@@ -38,14 +38,28 @@ public class Player
         }
         return false;
     }
+    
+    public boolean hasTileBlank(String name){
+        for(int iter = 0; iter < this.tiles.length; iter++){
+            if(this.tiles[iter].name.equals(name)){
+                return true;
+            }
+            else if(this.tiles[iter].isBlank == true){
+                this.tiles[iter].name = name;
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void removeTile(String name){
         for(int iter = 0; iter < this.tiles.length; iter++){
             if(this.tiles[iter].name.equals(name)){
+                int score = this.score + this.tiles[iter].value;
+                this.score = score;
                 this.tiles[iter] = null;
             }
         }
-        this.fillTiles();
     }
 
     public void fillTiles(){
@@ -89,6 +103,12 @@ public class Player
             forReturn[iter] = random;
         }
         return forReturn;
+    }
+    
+    public void printTiles(){
+        for(int iter = 0; iter < this.tiles.length; iter++){
+            System.out.print(this.tiles[iter].name);
+        }
     }
     
     public static boolean contains(int[] reference, int check){

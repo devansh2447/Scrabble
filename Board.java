@@ -11,10 +11,10 @@ public class Board
     String wordList;
     
     public Board(){
-        this.squares = new Square[442];
+        this.squares = new Square[226];
         int assign = 1;
-        for(int row = 1; row < 22; row++){
-            for(int column = 1; column < 22; column++){
+        for(int row = 1; row < 16; row++){
+            for(int column = 1; column < 16; column++){
                 this.squares[assign] = new Square(column, row, 1, 1);
                 //add code to check for double and triple words and letters - develop separate methods
                 assign++;
@@ -61,14 +61,21 @@ public class Board
     }
 
     public void print(){
+        System.out.println("  1   2   3   4   5   6   7   8   9   10  11  12  13  14  15 ");
+        int rowNum = 1;
         for(int iter = 1; iter < this.squares.length; iter++){
-            if(this.squares[iter]!= null){
+            if((iter - 1) % 15 == 0){
+                System.out.print(rowNum + " ");
+                rowNum++;
+            }
+            if(this.squares[iter] != null){
                 this.squares[iter].print();
             }
             else{
                 System.out.print("    ");
             }
             if(iter % 15 == 0){
+                System.out.println();
                 System.out.println();
             }
         }
