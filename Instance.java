@@ -50,7 +50,7 @@ public class Instance
     public void newMove(int playerNum, boolean isFirstTime, boolean print){
         if(print){
             this.print();
-        }        
+        }    
         Instance old = this.clone();
         Scanner getInput = new Scanner(System.in);
         System.out.println(this.players[playerNum].name + "'s move.");
@@ -83,7 +83,7 @@ public class Instance
         //add code to check if game is over
         else{
             if(playerNum == this.numberOfPlayers - 1){
-                //add code to check if players wish to continue
+                //add code to check if players wish to continue, or implement code for a move to end the game
                 this.newMove(0, false, true);
             }
             else{
@@ -117,7 +117,7 @@ public class Instance
             letter = input.charAt(iter) + "";
             xPos = Integer.parseInt(input.charAt(iter + 1) + "");
             yPos = Integer.parseInt(input.charAt(iter + 2) + "");
-            boolean isValid = board.add(xPos, yPos, letter) && player.hasTileBlank(letter); //add code to take blank tiles into account
+            boolean isValid = board.add(xPos, yPos, letter) && player.hasTileBlank(letter);
             if(!isValid){
                 return false;
             }

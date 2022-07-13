@@ -68,5 +68,22 @@ public class Word
         }
         return forReturn;
     }
+
+    public static boolean checkIfContains(String check, String reference){
+        int pos = 0;
+        String word = "";
+        boolean isStringComplete = false;
+        for(pos = 0; pos < reference.length(); pos++){
+            if(reference.charAt(pos) != '\n' && reference.charAt(pos) != '\r'){
+                word = word + reference.charAt(pos);
+            }
+            else{
+                if(isStringComplete){
+                    //add code to check if word can be inserted
+                }
+            }
+        }
+        return false;
+    }
     
 }
