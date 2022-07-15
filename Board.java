@@ -21,6 +21,10 @@ public class Board
             }
         }
     }
+    
+    public void getDoubleLetter(){
+        
+    }
 
     public boolean add(int x, int y, String name){
         if(this.squares[getPos(x, y)].tile == null){

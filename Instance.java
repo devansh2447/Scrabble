@@ -48,6 +48,7 @@ public class Instance
     }
 
     public void newMove(int playerNum, boolean isFirstTime, boolean print){
+        //add code to check if tiles are still there in bag
         if(print){
             this.print();
         }    

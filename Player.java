@@ -68,7 +68,7 @@ public class Player
                 int random = random(0, this.instance.bag.tiles.length - 1);
                 this.tiles[iter] = this.instance.bag.tiles[random].clone();
                 this.instance.bag.tiles[random] = null;
-                this.instance.bag.crop();
+                this.instance.bag.crop(); //add code to check if there are enough tiles to fill the player's rack
             }
         }
     }
