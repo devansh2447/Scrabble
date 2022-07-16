@@ -64,11 +64,11 @@ public class Player
 
     public void fillTiles(){
         for(int iter = 0; iter < this.tiles.length; iter++){
-            if(this.tiles[iter] == null){
+            if(this.tiles[iter] == null && this.instance.bag.tiles.length > 0){
                 int random = random(0, this.instance.bag.tiles.length - 1);
                 this.tiles[iter] = this.instance.bag.tiles[random].clone();
                 this.instance.bag.tiles[random] = null;
-                this.instance.bag.crop(); //add code to check if there are enough tiles to fill the player's rack
+                this.instance.bag.crop();
             }
         }
     }

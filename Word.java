@@ -1,4 +1,5 @@
 
+
 /**
  * Write a description of class Word here.
  *
@@ -69,21 +70,51 @@ public class Word
         return forReturn;
     }
 
-    public static boolean checkIfContains(String check, String reference){
-        int pos = 0;
-        String word = "";
-        boolean isStringComplete = false;
-        for(pos = 0; pos < reference.length(); pos++){
-            if(reference.charAt(pos) != '\n' && reference.charAt(pos) != '\r'){
-                word = word + reference.charAt(pos);
-            }
-            else{
-                if(isStringComplete){
-                    //add code to check if word can be inserted
-                }
-            }
-        }
-        return false;
-    }
+    // public static boolean checkIfContains(String check, String reference){
+        // int pos = 0;
+        // String word = "";
+        // for(pos = 0; pos < reference.length(); pos++){
+            // if(reference.charAt(pos) != '\n' && reference.charAt(pos) != '\r'){
+                // word = word + reference.charAt(pos);
+            // }
+            // else{
+                    // if(checkIfInsert(word, check)){
+                        // return true;
+                    // }
+            // }
+        // }
+        // return false;
+    // }
+
+    // public static boolean checkIfInsert(String word, String reference){
+        // int wordIndex = 0;
+        // for(int iter = 0; iter < reference.length(); iter++){
+            // if(wordIndex < word.length()){
+                // if(reference.charAt(iter) == word.charAt(wordIndex) || reference.charAt(iter) == '_'){
+                    // wordIndex++;
+                // }
+                // else{
+                    // wordIndex = 0;
+                // }
+            // }
+            // else{
+                // return true;
+            // }
+        // }
+        // return false;
+    // }
+
+    // public static void test() throws IOException{
+        // Utils.init();
+        // String reference = Utils.processFile(Utils.getPathForReference());
+        // System.out.println(checkIfContains("A__S______", reference));
+    // }
+
+    // public static void main(String[] args){
+        // try {
+            // test();
+        // } catch (IOException e) {
+        // }
+    // }
     
 }

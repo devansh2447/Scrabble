@@ -17,6 +17,7 @@ public class Board
             for(int column = 1; column < 16; column++){
                 this.squares[assign] = new Square(column, row, 1, 1);
                 //add code to check for double and triple words and letters - develop separate methods
+                //use AssignValues class
                 assign++;
             }
         }

@@ -81,10 +81,14 @@ public class Instance
             System.out.println();
             this.newMove(playerNum, isFirstTime, false);
         }
-        //add code to check if game is over
         else{
+            System.out.println("Press x to exit, and any other key to continue");
+            String continuePlay = getInput.nextLine();
+            if(continuePlay.equalsIgnoreCase("x")){
+                System.out.println("Exiting program...");
+                Utils.exit();
+            }
             if(playerNum == this.numberOfPlayers - 1){
-                //add code to check if players wish to continue, or implement code for a move to end the game
                 this.newMove(0, false, true);
             }
             else{

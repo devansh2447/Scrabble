@@ -13,6 +13,4 @@ comment5.params=check\ reference
 comment5.target=boolean\ isWord(java.lang.String,\ java.lang.String)
 comment6.params=squares\ include
 comment6.target=java.lang.String\ getWordFromArray(Square[],\ int)
-comment7.params=check\ reference
-comment7.target=boolean\ checkIfContains(java.lang.String,\ java.lang.String)
-numComments=8
+numComments=7
