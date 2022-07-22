@@ -46,6 +46,15 @@ public class Bag
         return forReturn;
     }
 
+    public boolean isEmpty(){
+        if(this.tiles.length == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public static String getLetter(int num){
         String reference = "ABCDEFGHIJKLMNOPQRSTUVWXYZ_";
         return reference.charAt(num) + "";

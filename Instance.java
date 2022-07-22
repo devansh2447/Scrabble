@@ -49,6 +49,9 @@ public class Instance
 
     public void newMove(int playerNum, boolean isFirstTime, boolean print){
         //add code to check if tiles are still there in bag
+        if(this.bag.isEmpty()){
+            this.winner();
+        }
         if(print){
             this.print();
         }    
@@ -97,6 +100,71 @@ public class Instance
         }
     }
 
+    public void winner(){
+        int[] winners = this.getWinner();
+        int numberOfWinners = count(winners);
+        if(!(numberOfWinners == 1)){
+            System.out.println("Looks like there has been a draw between " + numberOfWinners + " players!");
+            System.out.println("Winners: ");
+        }
+        else{
+            System.out.println("Winner: ");
+        }
+        for(int iter = 0; iter < winners.length; iter++){
+            if(winners[iter] < winners.length){
+                System.out.println("Player " + this.players[winners[iter]].name + " got " + this.players[winners[iter]].score + " points.");
+            }
+        }
+    }
+
+    public void continuePlay() throws IOException{
+        Scanner check = new Scanner(System.in);
+        System.out.println("Press e to exit and any other key to continue.");
+        String input = check.nextLine();
+        check.close();
+        if(input.equalsIgnoreCase("e")){
+            Utils.exit();
+        }
+        else{
+            init();
+        }
+    }
+
+    public int[] getWinner(){
+        int[] scores = fill(new int[this.players.length]);
+        int[] results = new int[scores.length];
+        int fill = 0;
+        int highest = 0;
+        for(int iter = 0; iter < scores.length; iter++){
+            if(this.players[iter] != null && this.players[iter].score >= highest){
+                results[fill] = this.players[iter].score;
+                fill++;
+                highest = this.players[iter].score;
+            }
+        }
+        return results;
+    }
+
+    public static int count(int[] reference){
+        int result = 0;
+        for(int iter = 0; iter < reference.length; iter++){
+            if(!(reference[iter] > reference.length)){
+                result++;
+            }
+        }
+        return result;
+    }
+
+    public static int[] fill(int[] toFill){
+        int add = toFill.length + 1;
+        for(int iter = 0; iter < toFill.length; iter++){
+            if(toFill[iter] == 0){
+                toFill[iter] = add;
+            }
+        }
+        return toFill;
+    }
+
     public Instance clone(){
         Instance forReturn = new Instance();
         Player[] players = new Player[this.players.length];
@@ -132,6 +200,11 @@ public class Instance
         }
         player.fillTiles();
         return true;
+    }
+
+    public static void init() throws IOException{
+        Utils.init();
+        //add code to get players and log options
     }
 
     public static void test() throws IOException{
